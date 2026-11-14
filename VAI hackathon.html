@@ -1,0 +1,1810 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071525">
+<meta name="description" content="EcoSort AI uses artificial intelligence to identify waste materials and provide responsible disposal guidance.">
+<title>EcoSort AI | Intelligent Waste Sorting</title>
+
+<style>
+:root {
+    --bg: #071525;
+    --surface: #0e1e32;
+    --surface2: #142a43;
+    --surface3: #1a3452;
+
+    --accent: #258bff;
+    --accent-dark: #1675e8;
+    --accent-light: #65b5ff;
+
+    --text: #f2f7ff;
+    --muted: #a3b6cc;
+    --border: rgba(255,255,255,.09);
+
+    --danger: #ff7777;
+    --yellow: #f4d477;
+    --success: #55d6a0;
+
+    --shadow: 0 20px 65px rgba(0,0,0,.22);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(
+            ellipse at 10% 0%,
+            rgba(37,139,255,.17),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 90% 40%,
+            rgba(22,117,232,.07),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+    font-family: Inter, Arial, sans-serif;
+    min-height: 100vh;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* HEADER */
+
+header {
+    min-height: 76px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(7,21,37,.75);
+    backdrop-filter: blur(16px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -.6px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#258bff,#1675e8);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    box-shadow: 0 5px 20px rgba(37,139,255,.25);
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 12px var(--success);
+}
+.intelligence-btn {
+    background: rgba(37,139,255,.10);
+    border: 1px solid rgba(37,139,255,.35);
+    color: var(--accent-light);
+    padding: 10px 15px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 750;
+    transition: .2s;
+}
+
+.intelligence-btn:hover {
+    background: rgba(37,139,255,.20);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+/* MAIN */
+
+main {
+    max-width: 1150px;
+    margin: auto;
+    padding: 70px 24px 85px;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-light);
+    border: 1px solid rgba(37,139,255,.25);
+    background: rgba(37,139,255,.08);
+    border-radius: 30px;
+    padding: 9px 16px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 21px;
+}
+
+h1 {
+    font-size: clamp(36px,5vw,59px);
+    letter-spacing: -2.5px;
+    line-height: 1.1;
+    margin-bottom: 17px;
+}
+
+h1 span {
+    background: linear-gradient(90deg,#258bff,#80c2ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 610px;
+    margin: auto;
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+
+/* INTELLIGENCE DISCOVERY */
+.intelligence-promo {
+    display: none;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 22px;
+    align-items: center;
+    margin: 0 0 34px;
+    padding: 25px 28px;
+    border: 1px solid rgba(37,139,255,.35);
+    border-radius: 18px;
+    background: linear-gradient(115deg, rgba(37,139,255,.15), rgba(14,30,50,.96) 65%);
+    box-shadow: 0 12px 35px rgba(0,0,0,.16);
+}
+.intelligence-promo h2 {
+    font-size: 20px;
+    margin: 8px 0;
+}
+.intelligence-promo p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+.intelligence-promo .promo-label {
+    color: var(--accent-light);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+.promo-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+.explore-btn {
+    border: 0;
+    border-radius: 10px;
+    padding: 14px 20px;
+    color: white;
+    background: linear-gradient(135deg,#258bff,#1675e8);
+    font-size: 13px;
+    font-weight: 800;
+    box-shadow: 0 7px 22px rgba(37,139,255,.22);
+    transition: .2s;
+}
+.explore-btn:hover {
+    transform: translateY(-2px);
+    background: #65b5ff;
+}
+.promo-metrics {
+    display: flex;
+    gap: 18px;
+    color: var(--muted);
+    font-size: 11px;
+}
+.promo-metrics strong {
+    display: block;
+    color: var(--text);
+    font-size: 17px;
+    margin-bottom: 3px;
+}
+@media(max-width:760px) {
+    .intelligence-promo {
+        grid-template-columns: 1fr;
+        padding: 22px;
+    }
+    .promo-action {
+        align-items: flex-start;
+    }
+    .promo-metrics {
+        flex-wrap: wrap;
+    }
+}
+
+/* WORKSPACE */
+
+.workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.panel {
+    background: rgba(14,30,50,.94);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 27px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(14px);
+    transition: border-color .25s;
+}
+
+.panel:hover {
+    border-color: rgba(37,139,255,.25);
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 23px;
+}
+
+.panel-heading h2 {
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.step {
+    color: var(--accent-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: rgba(37,139,255,.09);
+    padding: 7px 10px;
+    border-radius: 6px;
+}
+
+/* UPLOAD */
+
+.upload-zone {
+    min-height: 305px;
+    border: 1.5px dashed rgba(37,139,255,.38);
+    background: rgba(37,139,255,.035);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    transition: .25s ease;
+    cursor: pointer;
+}
+
+.upload-zone:hover,
+.upload-zone.dragging {
+    background: rgba(37,139,255,.09);
+    border-color: var(--accent);
+}
+
+.upload-icon {
+    width: 68px;
+    height: 68px;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    background: rgba(37,139,255,.12);
+    color: var(--accent-light);
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.upload-zone h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.upload-zone p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.browse-btn {
+    margin-top: 21px;
+    background: linear-gradient(135deg,#258bff,#1675e8);
+    color: white;
+    padding: 13px 24px;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 13px;
+    transition: .2s;
+    box-shadow: 0 5px 20px rgba(37,139,255,.18);
+}
+
+.browse-btn:hover,
+.scan-btn:not(:disabled):hover {
+    background: #65b5ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37,139,255,.3);
+}
+
+#fileInput {
+    display: none;
+}
+
+.preview {
+    width: 100%;
+    max-height: 290px;
+    object-fit: contain;
+    border-radius: 13px;
+    display: none;
+    margin-bottom: 12px;
+    background: #071525;
+    border: 1px solid var(--border);
+    padding: 5px;
+}
+
+.file-info {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+    word-break: break-all;
+    line-height: 1.6;
+}
+
+.scan-btn {
+    width: 100%;
+    padding: 16px;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 11px;
+    background: linear-gradient(135deg,#258bff,#1675e8);
+    color: white;
+    font-weight: 800;
+    font-size: 14px;
+    transition: .2s;
+    box-shadow: 0 5px 20px rgba(37,139,255,.16);
+}
+
+.scan-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* RESULTS PLACEHOLDER */
+
+.result-placeholder {
+    min-height: 345px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.result-icon {
+    width: 74px;
+    height: 74px;
+    border-radius: 23px;
+    display: grid;
+    place-items: center;
+    background: rgba(37,139,255,.1);
+    color: var(--accent-light);
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.result-placeholder h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.result-placeholder p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+    max-width: 260px;
+}
+
+.results {
+    display: none;
+}
+
+.category-label {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    margin-bottom: 8px;
+}
+
+.category-name {
+    font-size: 32px;
+    color: var(--accent-light);
+    font-weight: 800;
+    text-transform: capitalize;
+    margin-bottom: 23px;
+    overflow-wrap: anywhere;
+}
+
+/* CONFIDENCE */
+
+.confidence-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.confidence-row strong {
+    color: var(--accent-light);
+}
+
+.progress {
+    height: 9px;
+    background: #203a5a;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,#1675e8,#65b5ff);
+    border-radius: 10px;
+    transition: width .7s ease;
+    box-shadow: 0 0 12px rgba(37,139,255,.45);
+}
+
+/* AI CARDS */
+
+.ai-card {
+    background: var(--surface2);
+    padding: 17px;
+    border-radius: 13px;
+    margin-bottom: 13px;
+    border: 1px solid rgba(255,255,255,.055);
+    transition: border-color .2s;
+}
+
+.ai-card:hover {
+    border-color: rgba(37,139,255,.22);
+}
+
+.ai-card h4 {
+    font-size: 12px;
+    margin-bottom: 9px;
+}
+
+.ai-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* AI COMPARISON */
+
+.comparison {
+    padding: 14px;
+    border-radius: 11px;
+    background: rgba(37,139,255,.07);
+    border: 1px solid rgba(37,139,255,.2);
+    margin-bottom: 13px;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.comparison strong {
+    color: var(--accent-light);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comparison.warning {
+    border-color: rgba(244,212,119,.3);
+    background: rgba(244,212,119,.06);
+}
+
+.comparison.warning strong {
+    color: var(--yellow);
+}
+
+.comparison.error {
+    border-color: rgba(255,119,119,.3);
+    background: rgba(255,119,119,.06);
+}
+
+.comparison.error strong {
+    color: var(--danger);
+}
+
+/* RESET */
+
+.reset-btn {
+    width: 100%;
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: transparent;
+    padding: 13px;
+    border-radius: 10px;
+    margin-top: 8px;
+    font-size: 12px;
+    transition: .2s;
+}
+
+.reset-btn:hover {
+    background: var(--surface3);
+    border-color: var(--accent);
+}
+
+/* LOADING */
+
+.loading {
+    display: none;
+    color: var(--accent-light);
+    text-align: center;
+    padding: 35px 0;
+    font-size: 13px;
+}
+
+.spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(37,139,255,.2);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* NOTICE */
+
+.notice {
+    margin-top: 26px;
+    padding: 17px;
+    border-radius: 12px;
+    background: rgba(244,212,119,.055);
+    border: 1px solid rgba(244,212,119,.14);
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.notice strong {
+    color: var(--yellow);
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 2;
+}
+
+footer span {
+    color: var(--accent-light);
+    font-weight: 700;
+}
+/* ECOSORT INTELLIGENCE */
+
+.intelligence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.intelligence-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.intelligence-card span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.intelligence-card h3 {
+    color: var(--accent-light);
+    font-size: 30px;
+    margin: 13px 0 7px;
+}
+
+.intelligence-card p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.distribution-row {
+    margin: 18px 0;
+}
+
+.distribution-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.distribution-track {
+    height: 9px;
+    background: #203a5a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.distribution-fill {
+    height: 100%;
+    background: linear-gradient(90deg,#1675e8,#65b5ff);
+    border-radius: 10px;
+}
+
+.insight-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 17px;
+    border-radius: 12px;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+@media(max-width:760px) {
+    .intelligence-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .panel-heading {
+        gap: 12px;
+        align-items: flex-start;
+    }
+}
+
+@media(max-width:420px) {
+    .intelligence-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ACCESSIBILITY */
+
+button:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 4px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 760px) {
+    main {
+        padding: 43px 17px 65px;
+    }
+
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 0 5%;
+        min-height: 68px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .hero {
+        margin-bottom: 35px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .category-name {
+        font-size: 27px;
+    }
+}
+
+@media(max-width: 380px) {
+    .header-right {
+        font-size: 10px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<header>
+    <div class="logo">
+        <div class="logo-icon">♻</div>
+        EcoSort <span>AI</span>
+    </div>
+
+    <div class="header-right">
+
+        <button class="intelligence-btn" id="intelligenceBtn" type="button">
+            ✦ EcoSort Intelligence
+        </button>
+
+        <div class="status-dot"></div>
+        AI Waste Intelligence
+
+    </div>
+</header>
+
+
+<main>
+
+    <section class="hero">
+        <div class="eyebrow">
+            ✦ INTELLIGENT WASTE IDENTIFICATION
+        </div>
+
+        <h1>
+            Give Waste a <span>Second Chance.</span>
+        </h1>
+
+        <p>
+            Upload an image and let artificial intelligence help
+            identify its material, compare AI predictions, and
+            discover more responsible disposal options.
+        </p>
+    </section>
+
+    
+    <!-- ECOSORT INTELLIGENCE DASHBOARD -->
+
+<section id="intelligenceDashboard" style="display:none;">
+
+    <div class="panel" style="margin-bottom:25px;">
+
+        <div class="panel-heading">
+            <div>
+                <span class="eyebrow">✦ ECOSORT ANALYTICS</span>
+                <h2 style="font-size:25px;">EcoSort Intelligence</h2>
+                <p style="color:var(--muted);font-size:13px;margin-top:9px;">
+                    Understand waste patterns through AI-powered analysis.
+                </p>
+            </div>
+
+            <<div style="display:flex;gap:10px;flex-wrap:wrap;">
+
+    <button class="reset-btn" id="refreshAnalyticsBtn"
+            style="width:auto;margin:0;">
+        ↻ Refresh Analytics
+    </button>
+
+    <button class="reset-btn" id="backToScannerBtn"
+            style="width:auto;margin:0;">
+        ← Back to Scanner
+    </button>
+
+</div>
+        </div>
+
+        <!-- OVERVIEW CARDS -->
+
+        <div class="intelligence-grid">
+
+            <div class="intelligence-card">
+                <span>Total Scans</span>
+                <h3 id="totalScans">0</h3>
+                <p>Items analyzed by EcoSort AI</p>
+            </div>
+
+            <div class="intelligence-card">
+                <span>AI Agreement Rate</span>
+                <h3 id="agreementRate">N/A</h3>
+                <p id="agreementCaption">Awaiting confirmed comparisons</p>
+            </div>
+
+            <div class="intelligence-card">
+                <span>Review Required</span>
+                <h3 id="reviewCount">0</h3>
+                <p>Scans needing attention</p>
+            </div>
+
+            <div class="intelligence-card">
+                <span>Confirmed Comparisons</span>
+                <h3 id="confirmedComparisons">0</h3>
+                <p>Scans with two usable AI results</p>
+            </div>
+
+            <div class="intelligence-card">
+                <span>Gemini Unavailable</span>
+                <h3 id="geminiUnavailable">0</h3>
+                <p>Scans without a Gemini result</p>
+            </div>
+
+            <div class="intelligence-card">
+                <span>Waste Categories</span>
+                <h3 id="categoryCount">6</h3>
+                <p>Supported material types</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- WASTE DISTRIBUTION -->
+
+    <div class="panel" style="margin-bottom:25px;">
+
+        <div class="panel-heading">
+            <h2>Waste Distribution</h2>
+            <span class="step">SCAN ANALYTICS</span>
+        </div>
+
+        <div id="wasteDistribution">
+            <p style="color:var(--muted);font-size:13px;">
+                No scan data available yet. Start analyzing waste items
+                to generate your distribution report.
+            </p>
+        </div>
+
+    
+    </div>
+
+    <!-- RECENT SCAN ACTIVITY -->
+
+    <div class="panel" style="margin-bottom:25px;">
+
+        <div class="panel-heading">
+            <div>
+                <h2>Recent Scan Activity</h2>
+                <p style="color:var(--muted);font-size:13px;margin-top:7px;">
+                    A record of the latest items analyzed by EcoSort AI.
+                </p>
+            </div>
+            <span class="step">LATEST 8 SCANS</span>
+        </div>
+
+        <div id="recentScanActivity">
+            <p style="color:var(--muted);font-size:13px;">
+                Loading recent scan activity...
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ENVIRONMENTAL INSIGHTS -->
+
+
+    <div class="panel">
+
+        <div class="panel-heading">
+            <h2>Environmental Insights</h2>
+            <span class="step">AI INSIGHTS</span>
+        </div>
+
+        <div id="environmentalInsights">
+            <p style="color:var(--muted);font-size:13px;">
+                Insights will appear here as scan records accumulate.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+    <section class="workspace">
+
+        <!-- UPLOAD PANEL -->
+
+        <div class="panel">
+
+            <div class="panel-heading">
+                <h2>Scan an Item</h2>
+                <span class="step">STEP 01</span>
+            </div>
+
+            <div class="upload-zone" id="uploadZone">
+
+                <div class="upload-icon">📷</div>
+
+                <h3>Upload a waste image</h3>
+
+                <p>
+                    Drag and drop an image here or select one
+                    from your device.
+                    <br>
+                    JPG, PNG or WEBP · Maximum 10 MB
+                </p>
+
+                <button class="browse-btn" id="browseBtn" type="button">
+                    Browse Images
+                </button>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+            </div>
+
+            <img id="preview" class="preview" alt="Selected waste image">
+
+            <div id="fileInfo" class="file-info"></div>
+
+            <button class="scan-btn" id="scanBtn" disabled>
+                Analyze Waste →
+            </button>
+
+        </div>
+
+        <!-- RESULTS PANEL -->
+
+        <div class="panel">
+
+            <div class="panel-heading">
+                <h2>Analysis Results</h2>
+                <span class="step">STEP 02</span>
+            </div>
+
+            <div class="result-placeholder" id="placeholder">
+
+                <div class="result-icon">🔍</div>
+
+                <h3>Waiting for your scan</h3>
+
+                <p>
+                    Your classification results, AI comparison
+                    and disposal guidance will appear here.
+                </p>
+
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                Analyzing your image with AI...
+                <p style="color:var(--muted);font-size:11px;margin-top:9px;">
+                    Running independent AI analysis
+                </p>
+            </div>
+
+            <div class="results" id="results">
+
+                <div class="category-label">
+                    MobileNetV2 Classification
+                </div>
+
+                <div class="category-name" id="category">
+                    Plastic
+                </div>
+
+                <div class="confidence-row">
+                    <span>Model confidence</span>
+                    <strong id="confidence">0%</strong>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <div class="ai-card">
+                    <h4>🤖 Gemini Independent Review</h4>
+                    <p id="geminiResult">
+                        Waiting for analysis...
+                    </p>
+                </div>
+
+                <div class="comparison" id="comparison">
+                    <strong id="comparisonStatus">AI Comparison</strong>
+                    <span id="comparisonMessage"></span>
+                </div>
+
+                <div class="ai-card">
+                    <h4>🌱 Disposal Guidance</h4>
+                    <p id="recommendation"></p>
+                </div>
+
+                <button class="reset-btn" id="resetBtn">
+                    ↻ Scan Another Item
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+<!-- ECOSORT INTELLIGENCE DISCOVERY -->
+<section class="intelligence-promo" id="intelligencePromo">
+    <div>
+        <div class="promo-label">✦ GO BEYOND INDIVIDUAL SCANS</div>
+        <h2>Explore EcoSort Intelligence</h2>
+        <p>
+            View scan analytics, waste-category patterns, AI comparison
+            results and items that may need human review.
+        </p>
+    </div>
+
+    <div class="promo-action">
+        <button class="explore-btn" id="exploreIntelligenceBtn" type="button">
+            Open Analytics Dashboard →
+        </button>
+
+        <div class="promo-metrics">
+            <div>
+                <strong id="promoTotalScans">—</strong>
+                Total scans
+            </div>
+            <div>
+                <strong id="promoReviewCount">—</strong>
+                Need review
+            </div>
+            <div>
+                <strong id="promoCategoryCount">6</strong>
+                Categories
+            </div>
+        </div>
+    </div>
+</section>
+    <div class="notice">
+        <strong>Important:</strong>
+        AI predictions are estimates, not guarantees.
+        Materials, contamination and local recycling rules vary.
+        Review uncertain classifications before disposal.
+    </div>
+
+</main>
+
+<footer>
+    Built with curiosity and technology by
+    <span>EcoSort AI</span>.
+    <br><br>
+    Making intelligent waste awareness more accessible.
+</footer>
+
+<script>
+
+const fileInput = document.getElementById("fileInput");
+const browseBtn = document.getElementById("browseBtn");
+const uploadZone = document.getElementById("uploadZone");
+const preview = document.getElementById("preview");
+const fileInfo = document.getElementById("fileInfo");
+const scanBtn = document.getElementById("scanBtn");
+
+const placeholder = document.getElementById("placeholder");
+const loading = document.getElementById("loading");
+const results = document.getElementById("results");
+
+let selectedFile = null;
+let previewURL = null;
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+browseBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    fileInput.click();
+});
+
+uploadZone.addEventListener("click", (event) => {
+    if (event.target.closest("button")) return;
+    fileInput.click();
+});
+
+fileInput.addEventListener("change", event => {
+    handleFile(event.target.files[0]);
+});
+
+function handleFile(file) {
+
+    if (!file) return;
+
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+        alert("Please select a JPG, PNG, or WEBP image.");
+        fileInput.value = "";
+        return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+        alert("Please select an image smaller than 10 MB.");
+        fileInput.value = "";
+        return;
+    }
+
+    selectedFile = file;
+
+    if (previewURL) {
+        URL.revokeObjectURL(previewURL);
+    }
+
+    previewURL = URL.createObjectURL(file);
+
+    preview.src = previewURL;
+    preview.style.display = "block";
+
+    uploadZone.style.display = "none";
+
+    fileInfo.textContent =
+        file.name + " • " +
+        (file.size / 1024 / 1024).toFixed(2) + " MB";
+
+    scanBtn.disabled = false;
+
+    placeholder.style.display = "flex";
+    results.style.display = "none";
+    loading.style.display = "none";
+}
+
+uploadZone.addEventListener("dragover", event => {
+    event.preventDefault();
+    uploadZone.classList.add("dragging");
+});
+
+uploadZone.addEventListener("dragleave", event => {
+    if (!uploadZone.contains(event.relatedTarget)) {
+        uploadZone.classList.remove("dragging");
+    }
+});
+
+uploadZone.addEventListener("drop", event => {
+
+    event.preventDefault();
+
+    uploadZone.classList.remove("dragging");
+
+    const file = event.dataTransfer.files[0];
+
+    handleFile(file);
+});
+
+scanBtn.addEventListener("click", scanImage);
+
+async function scanImage() {
+
+    if (!selectedFile) return;
+
+    scanBtn.disabled = true;
+
+    placeholder.style.display = "none";
+    results.style.display = "none";
+    loading.style.display = "block";
+
+    const formData = new FormData();
+
+    formData.append("file", selectedFile);
+
+    try {
+
+        const response = await fetch("/api/scan", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.detail || "Scanning failed."
+            );
+        }
+
+        displayResults(data);
+
+    } catch (error) {
+
+        loading.style.display = "none";
+        placeholder.style.display = "flex";
+
+        alert(
+            "Could not analyze image: " + error.message
+        );
+
+    } finally {
+
+        scanBtn.disabled = !selectedFile;
+
+    }
+}
+
+function displayResults(data) {
+
+    loading.style.display = "none";
+    placeholder.style.display = "none";
+    results.style.display = "block";
+    document.getElementById("intelligencePromo").style.display = "grid";
+
+    const mobilenet = data.mobilenet;
+    const gemini = data.gemini;
+    const comparison = data.comparison;
+
+    const confidence = Math.max(
+        0,
+        Math.min(100, Number(mobilenet.confidence) || 0)
+    );
+
+    document.getElementById("category").textContent =
+        mobilenet.category;
+
+    document.getElementById("confidence").textContent =
+        confidence + "%";
+
+    document.getElementById("progressFill").style.width =
+        confidence + "%";
+
+    let geminiText;
+
+if (gemini) {
+
+    geminiText =
+        "Category: " + gemini.category +
+        ". " + gemini.explanation;
+
+} else if (data.gemini_error) {
+
+    const errorMessage = String(data.gemini_error);
+
+    const quotaExceeded =
+        /429|RESOURCE_EXHAUSTED|quota|rate.?limit/i.test(errorMessage);
+
+    if (quotaExceeded) {
+
+        geminiText =
+            "Gemini review is temporarily unavailable because " +
+            "its daily API request limit has been reached. " +
+            "EcoSort AI is continuing with its MobileNetV2 prediction. " +
+            "A second opinion is currently unavailable.";
+
+    } else {
+
+        geminiText =
+            "Gemini review is temporarily unavailable. " +
+            "EcoSort AI is continuing with its MobileNetV2 prediction. " +
+            "A second opinion could not be obtained.";
+
+    }
+
+} else {
+
+    geminiText = "Gemini review is not configured.";
+
+}
+    document.getElementById("geminiResult").textContent =
+        geminiText;
+
+    const comparisonBox =
+        document.getElementById("comparison");
+
+    comparisonBox.className = "comparison";
+
+    if (
+        comparison.status === "DISAGREEMENT" ||
+        comparison.status === "REVIEW_REQUIRED" ||
+        comparison.status === "LOW_CONFIDENCE"
+    ) {
+        comparisonBox.classList.add("warning");
+    }
+
+    if (comparison.status === "ERROR") {
+        comparisonBox.classList.add("error");
+    }
+
+    document.getElementById("comparisonStatus").textContent =
+        comparison.status.replaceAll("_", " ");
+
+    document.getElementById("comparisonMessage").textContent =
+        comparison.message;
+
+    document.getElementById("recommendation").textContent =
+        data.recommendation || "No disposal guidance available.";
+
+    results.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+}
+
+document.getElementById("resetBtn")
+    .addEventListener("click", resetScanner);
+
+function resetScanner() {
+
+    selectedFile = null;
+
+    fileInput.value = "";
+
+    if (previewURL) {
+        URL.revokeObjectURL(previewURL);
+        previewURL = null;
+    }
+
+    preview.src = "";
+    preview.style.display = "none";
+
+    uploadZone.style.display = "flex";
+
+    fileInfo.textContent = "";
+
+    scanBtn.disabled = true;
+
+    results.style.display = "none";
+    loading.style.display = "none";
+    placeholder.style.display = "flex";
+
+    document.getElementById("progressFill").style.width = "0%";
+}
+
+
+// --------------------------------------------------
+// LOAD ECOSORT INTELLIGENCE ANALYTICS
+// --------------------------------------------------
+
+async function loadAnalytics() {
+
+    const totalScans = document.getElementById("totalScans");
+    const agreementRate = document.getElementById("agreementRate");
+    const reviewCount = document.getElementById("reviewCount");
+    const categoryCount = document.getElementById("categoryCount");
+
+    const wasteDistribution =
+        document.getElementById("wasteDistribution");
+
+    const environmentalInsights =
+        document.getElementById("environmentalInsights");
+
+    const recentScanActivity =
+        document.getElementById("recentScanActivity");
+
+
+    try {
+
+        const response = await fetch("/api/analytics");
+
+        if (!response.ok) {
+            throw new Error("Could not retrieve analytics.");
+        }
+
+        const data = await response.json();
+
+        // Display the 8 most recent scans
+        const recentScans = data.recent_scans || [];
+
+        if (recentScans.length === 0) {
+
+            recentScanActivity.innerHTML = `
+                <p style="color:var(--muted);font-size:13px;">
+                    No recent scans yet. Analyze an item to see activity here.
+                </p>
+            `;
+
+        } else {
+
+            const statusLabels = {
+                AGREEMENT: "AI Agreement",
+                DISAGREEMENT: "AI Disagreement",
+                LOW_CONFIDENCE: "Low Confidence",
+                REVIEW_REQUIRED: "Review Required"
+            };
+
+            const statusColors = {
+                AGREEMENT: "#00e5a8",
+                DISAGREEMENT: "#ff647c",
+                LOW_CONFIDENCE: "#ffb547",
+                REVIEW_REQUIRED: "#ffb547"
+            };
+
+            recentScanActivity.innerHTML = recentScans.map(scan => {
+
+                const statusLabel =
+                    statusLabels[scan.status] || "Review Required";
+
+                const statusColor =
+                    statusColors[scan.status] || "#ffb547";
+
+                const date = new Date(
+                    scan.created_at.replace(" ", "T")
+                );
+
+                const formattedDate = Number.isNaN(date.getTime())
+                    ? scan.created_at
+                    : date.toLocaleString();
+
+                const geminiResult = scan.gemini_category
+                    ? scan.gemini_category
+                    : "Unavailable";
+
+                return `
+                    <div style="
+                        padding:16px;
+                        margin-bottom:12px;
+                        border:1px solid var(--border);
+                        border-radius:12px;
+                        background:rgba(255,255,255,0.025);
+                    ">
+
+                        <div style="
+                            display:flex;
+                            justify-content:space-between;
+                            align-items:center;
+                            flex-wrap:wrap;
+                            gap:10px;
+                        ">
+
+                            <strong style="
+                                text-transform:capitalize;
+                                font-size:15px;
+                            ">
+                                ${scan.category}
+                            </strong>
+
+                            <span style="
+                                color:${statusColor};
+                                font-size:11px;
+                                font-weight:700;
+                            ">
+                                ${statusLabel}
+                            </span>
+
+                        </div>
+
+                        <div style="
+                            display:grid;
+                            grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+                            gap:12px;
+                            margin-top:13px;
+                            font-size:12px;
+                        ">
+
+                            <div>
+                                <span style="color:var(--muted);">
+                                    MobileNetV2
+                                </span>
+                                <p style="margin-top:4px;">
+                                    ${Number(scan.confidence).toFixed(2)}% confidence
+                                </p>
+                            </div>
+
+                            <div>
+                                <span style="color:var(--muted);">
+                                    Gemini
+                                </span>
+                                <p style="margin-top:4px;text-transform:capitalize;">
+                                    ${geminiResult}
+                                </p>
+                            </div>
+
+                            <div>
+                                <span style="color:var(--muted);">
+                                    Scan time
+                                </span>
+                                <p style="margin-top:4px;">
+                                    ${formattedDate}
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                `;
+
+            }).join("");
+
+        }
+
+
+        // Update overview cards
+        totalScans.textContent = data.total_scans;
+        agreementRate.textContent =
+            data.agreement_rate === null || data.agreement_rate === undefined
+                ? "N/A"
+                : Number(data.agreement_rate).toFixed(1) + "%";
+
+        document.getElementById("agreementCaption").textContent =
+            data.confirmed_comparisons > 0
+                ? "Based on confirmed AI comparisons"
+                : "No confirmed comparisons yet";
+
+        reviewCount.textContent = data.review_count;
+        categoryCount.textContent = data.category_count;
+        document.getElementById("confirmedComparisons").textContent =
+            data.confirmed_comparisons ?? 0;
+        document.getElementById("geminiUnavailable").textContent =
+            data.gemini_unavailable ?? 0;
+
+        document.getElementById("promoTotalScans").textContent =
+            data.total_scans;
+        document.getElementById("promoReviewCount").textContent =
+            data.review_count;
+        document.getElementById("promoCategoryCount").textContent =
+            data.category_count;
+
+        // Update waste distribution
+        const distribution = data.distribution;
+        const categories = Object.entries(distribution);
+
+        if (categories.length === 0) {
+
+            wasteDistribution.innerHTML = `
+                <p style="color:var(--muted);font-size:13px;">
+                    No scan data available yet. Start analyzing waste
+                    items to generate your distribution report.
+                </p>
+            `;
+
+            environmentalInsights.innerHTML = `
+                <p style="color:var(--muted);font-size:13px;">
+                    Insights will appear here as scan records accumulate.
+                </p>
+            `;
+
+            return;
+        }
+
+        const maximum = Math.max(
+            ...categories.map(item => item[1])
+        );
+
+        wasteDistribution.innerHTML = categories.map(
+            ([category, count]) => {
+
+                const percentage = (count / data.total_scans) * 100;
+                const barWidth = (count / maximum) * 100;
+
+                return `
+                    <div style="margin-bottom:20px;">
+
+                        <div style="
+                            display:flex;
+                            justify-content:space-between;
+                            margin-bottom:7px;
+                            font-size:13px;
+                        ">
+                            <strong style="text-transform:capitalize;">
+                                ${category}
+                            </strong>
+
+                            <span style="color:var(--muted);">
+                                ${count} scans (${percentage.toFixed(1)}%)
+                            </span>
+                        </div>
+
+                        <div style="
+                            height:9px;
+                            background:rgba(255,255,255,0.08);
+                            border-radius:20px;
+                            overflow:hidden;
+                        ">
+
+                            <div style="
+                                height:100%;
+                                width:${barWidth}%;
+                                background:linear-gradient(
+                                    90deg,
+                                    #008cff,
+                                    #00e5ff
+                                );
+                                border-radius:20px;
+                            "></div>
+
+                        </div>
+
+                    </div>
+                `;
+            }
+        ).join("");
+
+        // Generate insights from actual scan records
+        const mostScanned = [...categories].sort(
+            (a, b) => b[1] - a[1]
+        )[0];
+
+        environmentalInsights.innerHTML = `
+            <div style="margin-bottom:15px;">
+                <strong>Most frequently identified category</strong>
+                <p style="color:var(--muted);margin-top:6px;">
+                    ${mostScanned[0]} — ${mostScanned[1]} scans.
+                </p>
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <strong>AI comparison status</strong>
+                <p style="color:var(--muted);margin-top:6px;">
+                    ${
+                        data.confirmed_comparisons > 0
+                            ? "The AI systems agreed on " +
+                              Number(data.agreement_rate).toFixed(1) +
+                              "% of " + data.confirmed_comparisons +
+                              " confirmed comparisons."
+                            : "There are no confirmed two-model comparisons yet. " +
+                              "An agreement rate cannot be calculated until both " +
+                              "models return usable results."
+                    }
+                </p>
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <strong>Gemini availability</strong>
+                <p style="color:var(--muted);margin-top:6px;">
+                    Gemini did not return a usable result for
+                    ${data.gemini_unavailable ?? 0} recorded scans.
+                    These scans are not counted as AI disagreements.
+                </p>
+            </div>
+
+            <div>
+                <strong>Human review</strong>
+                <p style="color:var(--muted);margin-top:6px;">
+                    ${data.review_count} scans are marked for review.
+                    This can include low-confidence predictions or scans
+                    without a usable second AI opinion.
+                </p>
+            </div>
+        `;
+
+    } catch (error) {
+
+        console.error("Analytics error:", error);
+
+        wasteDistribution.textContent =
+            "Unable to load waste distribution. Please try again.";
+
+        environmentalInsights.textContent =
+            "Unable to load environmental insights.";
+
+    }
+}
+
+// ECOSORT INTELLIGENCE NAVIGATION
+
+const intelligenceBtn =
+    document.getElementById("intelligenceBtn");
+
+const intelligenceDashboard =
+    document.getElementById("intelligenceDashboard");
+
+const backToScannerBtn =
+    document.getElementById("backToScannerBtn");
+
+const scannerWorkspace =
+    document.querySelector(".workspace");
+
+const heroSection =
+    document.querySelector(".hero");
+
+const noticeSection =
+    document.querySelector(".notice");
+
+// Open Intelligence Dashboard from either entry point
+
+function openIntelligenceDashboard() {
+    scannerWorkspace.style.display = "none";
+    heroSection.style.display = "none";
+    noticeSection.style.display = "none";
+    document.getElementById("intelligencePromo").style.display = "none";
+
+    intelligenceDashboard.style.display = "block";
+    loadAnalytics();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+intelligenceBtn.addEventListener("click", openIntelligenceDashboard);
+document.getElementById("refreshAnalyticsBtn")
+    .addEventListener("click", async function () {
+
+        this.textContent = "Refreshing...";
+
+        await loadAnalytics();
+
+        this.textContent = "↻ Refresh Analytics";
+
+    });
+
+document.getElementById("exploreIntelligenceBtn")
+    .addEventListener("click", openIntelligenceDashboard);
+
+
+// Return to Scanner
+
+backToScannerBtn.addEventListener("click", () => {
+
+    intelligenceDashboard.style.display = "none";
+
+    scannerWorkspace.style.display = "grid";
+    heroSection.style.display = "block";
+    noticeSection.style.display = "block";
+    document.getElementById("intelligencePromo").style.display = "none";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
+</script>
+
+</body>
+</html>
